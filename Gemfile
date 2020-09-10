@@ -29,6 +29,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
   gem 'sqlite3', '~> 1.4'
   gem 'listen', '~> 3.2'
 end
