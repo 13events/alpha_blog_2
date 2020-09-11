@@ -29,4 +29,20 @@ class ArticlesController < ApplicationController
       redirect_to articles_path
     end
   end
+
+  #find article to edit, so we can display its information in the form
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    if @article.update(params.require(:article).permit(:title, :description))
+      flash[:notice] = "Article Edited Successfully!"
+      redirect_to articles_path
+    else 
+      render 'edit'
+    end
+  end
+  
 end
