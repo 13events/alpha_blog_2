@@ -6,5 +6,5 @@ Rails.application.routes.draw do
 
   get 'about', to: 'welcome#about' 
 
-  resources :articles, only: [:show, :index, :update]
+  resources :articles, only: [:show, :index, :new, :create]
 end
