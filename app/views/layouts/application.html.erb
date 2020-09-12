@@ -10,6 +10,10 @@
   </head>
 
   <body>
+    <%= link_to 'Home', root_path %> | 
+    <%= link_to 'Articles', articles_path %> | 
+    <%= link_to 'About', about_path %>
+
     <% flash.each do |name, msg| %>
       <%= msg %>
     <% end %>
