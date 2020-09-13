@@ -1,3 +1,35 @@
-<h1>Welcome to Alpha blog!</h1>
+<div id="page-content">
 
-<%= link_to "About", about_path %>
+  <!-- Welcome -->
+  <div class="container-fluid ">
+
+    <!-- Jumbotron Welcome Block-->
+    <div class="bg-dark jumbotron jumbotron-welcome mt-3 text-right shadow-lg rounded">
+
+      <!-- Content -->
+      <h1 class="display-5 text-white" >Welcome</h1>
+      <p class="lead text-white">
+        A world leader in capturing lifes important moments.
+      <p>
+      <hr class="my-2 bg-white hr-small">
+      <p class="lead text-white">Login or Sign up to get started!</p>
+      <!-- Content -->
+
+      <!-- Buttons -->
+      <button type="button" class="btn btn-light shadow  mr-2 rounded">
+        Login
+      </button>
+      <button type="button" class="btn btn-secondary  shadow rounded">
+        Sign Up
+      </button>
+      <!-- Buttons -->
+
+    </div>
+    <!-- Jumbotron Welcome Block-->
+
+  </div>
+    
+  <!-- Render Recent Posts -->
+  <%= render 'recentPosts' %>
+
+</div>

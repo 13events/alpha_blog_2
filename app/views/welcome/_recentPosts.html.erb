@@ -1,0 +1,43 @@
+<!-- Row -->
+<div class="row">
+
+  <!-- Column -->
+  <div class="col-12 mx-auto text-secondary text-center bg-dark rounded shadow">
+  
+    <!-- Content -->
+    <h1>Recent Posts</h1>
+  </div>
+  <!-- Column -->
+ 
+</div>
+<!-- Row  -->
+
+<div class="d-flex flex-column-reverse">
+  <% @articles.each do |article| %>
+    
+    <!-- Row -->
+    <div class="row mt-4">
+
+      <!-- Column -->
+      <div class="col mx-auto">
+
+        <!-- Card Content -->
+        <div class="card shadow">
+          <div class="card-body">
+            <h1 class="card-title"><%= article.title %></h1>
+            <p class="card-text"><%= truncate(article.description, length: 500) %></p>
+            <%= link_to 'Read More', article_path(article), class: "btn btn-sm btn-outline-secondary shadow"%>
+          </div>
+        </div>
+        <!-- Card Content -->
+
+      </div>
+      <!-- Column -->
+
+    </div>
+    <!-- Row -->
+
+  <% end %>
+</div>
+
+

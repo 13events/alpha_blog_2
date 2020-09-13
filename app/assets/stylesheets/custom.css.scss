@@ -1,0 +1,29 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+.btn-square {
+	border-radius: 0;
+}
+
+.jumbotron-welcome {
+	background-image: url(asset-path('welcome/camera_welcome_photo.jpg'));
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.hr-small {
+	max-width: 400px;
+	margin-right: 0px;
+}
+
+#page-content {
+	flex: 1 0 auto;
+}
+
+#sticky-footer {
+	flex-shrink: none;
+}
+
+html, body, .body-100 {
+	height: 100%;
+}
