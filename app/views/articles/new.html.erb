@@ -1,33 +1,8 @@
-<h1>Create New Article</h1>
+<div class="container" id="page-content">
+  <h1 class="text-white mt-4 text-center">Create a new article</h1>
 
-<!-- Display any errors -->
-<% if @article.errors.count > 0 %>
-  <h3>The Following errors prevented article from being saved:</h3>
-  <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-      <li>
-        <%= msg %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+  <%= render 'articleForm' %>
 
-<!-- Display article submission form -->
-<%= form_with scope: :article, url: articles_path, local: true do |f| %>
-  <p>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-  </p>
+</div>
 
-  <p>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </p>
-
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
-<%= link_to "Cancel", articles_path, method: :get %>
 

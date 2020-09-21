@@ -1,30 +1,28 @@
-<!-- Display any errors -->
-<% if @article.errors.count > 0 %>
-  <h3>The Following errors prevented article from being saved:</h3>
-  <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-      <li>
-        <%= msg %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
 
-<!-- Display article submission form -->
-<%= form_with(model: @article, local: true) do |f| %>
-  <p>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-  </p>
+<div class="container justify-content-start mt-3">
 
-  <p>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </p>
+<!-- Display errors, if any -->
+  <%= render 'shared/errorMessages' %>
 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+  <!-- Display article submission form -->
+  <%= form_with(model: @article, local: true, class: "card p-3 bg-dark shadow text-light") do |f| %>
+    <div class="form-group card-body">
+        <%= f.label :title, class: "card-title form-label h4" %>
+        <%= f.text_field :title, class: "form-control col-10 shadow-lg", placeholder: "Enter article title" %>
+    </div>
 
-<%= link_to 'Cancel', articles_path %>
+    <div class="form-group card-body">
+      <%= f.label :description, class: "h4 card-title" %>
+      <%= f.text_area :description, rows: 10, class: "form-control col-10 shadow-lg", placeholder: "Write your next novel..." %>
+    </div>
+
+    <div class="form-group card-body">
+      <div class="row">
+        <div class="col">
+          <%= f.submit class: "btn btn-outline-light"%>
+          <%= link_to 'Cancel', articles_path, class: "ml-3 btn btn-outline-info text-info" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,12 +1,42 @@
-<h1>Showing article details</h1>
 
-<p><strong>Title: </strong> <%= @article.title %></p>
-<p><strong>Description: </strong> <%= @article.description %></p>
+<div class="div" id="page-content">
+  <div class="d-flex flex-column">
 
-<table>
-  <tr> <%= link_to "Back", articles_path %> </tr> | 
-  <tr> <%= link_to "Edit", edit_article_path(@article), method: :get %> </tr> | 
-  <tr> <%= link_to "Delete", article_path(@article), method: :delete, data: {confirm: "Are you sure?"} %> </tr>
+      <!-- Row -->
+      <div class="row mt-4">
 
-</table>
- 
+        <!-- Column -->
+        <div class="col mx-auto">
+
+          <!-- Card Content -->
+          <div class="card shadow">
+            <div class="card-body">
+              <h1 class="card-title"><%= @article.title %></h1>
+              <div class="card-subtitle">Created: <%= @article.created_at.to_time %></div>
+              <hr class="bg-dark">
+              <p class="card-text"><%= simple_format(@article.description) %></p>
+            </div>
+          </div>
+          <!-- Card Content -->
+
+        </div>
+        <!-- Column -->
+
+      </div>
+      <!-- Row -->
+
+  
+    <!-- Row -->
+    <div class="row mt-3">
+      <div class="col">
+        <%= link_to 'Back', articles_path, class: "btn btn-secondary text-white bg-dark" %>
+      </div>
+      <div class="col text-right">
+        <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-info text-white" %>
+        <%= link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure you want to delete \"#{@article.title}\"?"}, class: "btn btn-danger text-white" %>
+      </div>
+    </div>
+  </div>
+
+
+</div>
