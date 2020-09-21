@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
 
   def home
-    @articles = Article.first(5)
+    @articles = Article.last(5)
   end
 
   def about
