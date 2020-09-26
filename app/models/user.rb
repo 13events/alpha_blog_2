@@ -2,6 +2,9 @@ class User < ApplicationRecord
   #change email to lowecase before saving to DB
   before_save {self.email = email.downcase}
 
+  #flad model as having secure password
+  has_secure_password
+
   validates :username, presence: true, uniqueness: { case_sensitive: false }, 
                                       length: { minimum: 3, maximum: 30 }
 
