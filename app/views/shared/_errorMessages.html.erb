@@ -1,13 +1,13 @@
 <!-- Display any errors -->
 
-  <% if @article.errors.count > 0 %>
+  <% if object.errors.count > 0 %>
     <div class="alert alert-danger alert-dismissible" role="alert">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
-      <h3 class="alert-heading">The Following errors prevented article from being saved</h3>
+      <h5 class="alert-heading">Please correct the following errors: </h5>
       <ul>
-        <% @article.errors.full_messages.each do |msg| %>
+        <% object.errors.full_messages.each do |msg| %>
           <li>
             <%= msg %>
           </li>
