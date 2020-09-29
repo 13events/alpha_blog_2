@@ -20,6 +20,8 @@ class UsersController < ApplicationController
     
   end
 
+  private 
+  
   #white list user parameters from form.
   def user_params
     params.require(:user).permit(:username, :email, :password)
