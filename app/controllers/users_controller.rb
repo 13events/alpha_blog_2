@@ -17,9 +17,22 @@ class UsersController < ApplicationController
       flash[:notice] = "User account created"
       redirect_to(root_path)
     end
-    
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = "Account edited successfully!"
+      #change to redirect to Account page
+      redirect_to root_path
+    else 
+      render 'signup'
+    end
+  end
   private 
   
   #white list user parameters from form.
