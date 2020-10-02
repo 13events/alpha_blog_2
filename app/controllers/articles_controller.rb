@@ -17,6 +17,10 @@ class ArticlesController < ApplicationController
   def create
     #create new article and require 'article' top key, permit 'title', 'description' keys
     @article = Article.new(article_params)
+
+    #hardcode a user to assign to the new article (REMOVE THIS LATER)
+    @article.user_id = User.first.id
+
     #save article to db
     @article.save
 

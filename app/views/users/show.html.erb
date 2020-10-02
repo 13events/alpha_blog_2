@@ -1,0 +1,20 @@
+
+<div class="row text-white">
+  <div class="col text-center">
+    <h1><%= "#{@user.username}'s Profile" %></h1>
+    <%= show_user_picture_for(@user, size: 200)%>
+  </div>
+</div>
+<div class="row mt-4">
+  <div class="col text-white text-center">
+    <h1> <%= "Your Articles" %></h1>
+  </div>
+  
+  <%= render 'articles/articles'%>
+
+
+
+
+
+
+
