@@ -2,7 +2,7 @@
 <div class="container justify-content-start mt-3">
 
 <!-- Display errors, if any -->
-  <%= render 'shared/errorMessages', object: @article %>
+  <%= render 'shared/errorMessages' %>
 
   <!-- Display article submission form -->
   <%= form_with(model: @article, local: true, class: "card p-3 bg-dark shadow text-light") do |f| %>
