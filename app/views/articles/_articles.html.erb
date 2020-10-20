@@ -18,7 +18,7 @@
             <div class="card-body">
               <h4 class="card-title"> <%= article.title %> </h4>
               <p class="card-subtitle mb-2 ">Date: <%= article.created_at.to_time %> </p>
-              <p class="card-subtitle mb-2 ">Author: <%= article.user.username %> </p>
+              <p class="card-subtitle mb-2 ">Author: <%= link_to "#{article.user.username}", user_path(article.user.id), class: "text-primary" %> </p>
               <hr class="bg-dark">
               <p class="card-text"> <%= truncate(article.description, length: 500) %> </p>
               <%= link_to 'Read More', article_path(article), class: "btn btn-sm btn-outline-secondary shadow" %>

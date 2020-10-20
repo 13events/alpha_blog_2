@@ -11,9 +11,18 @@
           <!-- Card Content -->
           <div class="card shadow">
             <div class="card-body">
-              <h1 class="card-title"><%= @article.title %></h1>
-              <div class="card-subtitle">Date: <%= @article.created_at.to_time %></div>
-              <div class="card-subtitle">Author: <%= @article.user.username %></div>
+              <div class="row">
+                <div class="col">
+                  <h1 class="card-title"><%= @article.title%></h1>
+                </div>
+              </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="card-subtitle">Date: <%= @article.created_at.to_time %></div>
+                    <div class="card-subtitle">Author: <%= link_to @article.user.username,  user_path(@article.user), class: "text-primary" %></div>
+                    <%= link_to show_user_picture_for(@article.user), user_path(@article.user) %>
+                  </div>
+                </div>
               <hr class="bg-dark">
               <p class="card-text"><%= simple_format(@article.description) %></p>
             </div>

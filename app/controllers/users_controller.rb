@@ -3,10 +3,15 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    @usersList = User.all
+  end
+
   def show
     @user = User.find(params[:id])
     @articles = @user.articles
   end
+
   def create
     #create a new user with white listed params
     @user = User.new(user_params)
@@ -32,9 +37,9 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       flash[:notice] = "Account edited successfully!"
       #change to redirect to Account page
-      redirect_to root_path
+      redirect_to @user
     else 
-      render 'signup'
+      render 'show'
     end
   end
   private 
