@@ -4,26 +4,27 @@ class UsersController < ApplicationController
   end
 
   def index
-    @usersList = User.all
+    @users_list = User.order(:name).page(params[:page]).per(5)
   end
 
   def show
     @user = User.find(params[:id])
-    @articles = @user.articles
+    @articles = @user.articles.order(:created_at).reverse_order
+    @articles = @articles.page(params[:page]).per(3)
   end
 
   def create
-    #create a new user with white listed params
+    # create a new user with white listed params
     @user = User.new(user_params)
 
-    #try to save to DB
+    # try to save to DB
     @user.save
 
-    #check for errors saving to DB
+    # check for errors saving to DB
     if @user.errors.any?
       render 'signup'
-    else 
-      flash[:notice] = "User account created"
+    else
+      flash[:notice] = 'User account created'
       redirect_to(root_path)
     end
   end
@@ -35,18 +36,18 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "Account edited successfully!"
-      #change to redirect to Account page
+      flash[:notice] = 'Account edited successfully!'
+      # change to redirect to Account page
       redirect_to @user
-    else 
+    else
       render 'show'
     end
   end
-  private 
-  
-  #white list user parameters from form.
+
+  private
+
+  # white list user parameters from form.
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end
-
 end

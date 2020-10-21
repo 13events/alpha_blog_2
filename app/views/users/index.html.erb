@@ -1,7 +1,7 @@
 <h1 class="text-center text-white">Authors</h1>
-
+<%= paginate @users_list %>
 <div class="container mx-auto" style="width: 600px">
-  <% @usersList.each do |user| %>
+  <% @users_list.each do |user| %>
     <div class="row mt-4">
       <div class="col">
         <div class="card text-center">
