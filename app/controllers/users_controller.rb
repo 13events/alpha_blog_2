@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users_list = User.order(:name).page(params[:page]).per(5)
+    @users_list = User.order(:name).page(params[:page]).per(1)
   end
 
   def show

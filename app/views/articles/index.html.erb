@@ -8,6 +8,6 @@
     </div>
   </div>
 
-
-<%= paginate @articles %>
+<%= render '/shared/pageFilter' %>
+<%= paginate @articles %> 
 <%= render 'articles/articles' %>

@@ -5,7 +5,12 @@ class ArticlesController < ApplicationController
 
   # display all articles
   def index
-    @articles = Article.order(:created_at).page(params[:page]).per(4)
+    if(params.has_key?(:per_page))
+      @articles = Article.order(:created_at).page(params[:page]).per(params[:per_page])
+    else
+      @articles = Article.order(:created_at).page(params[:page])
+    end
+    
     
   end
 

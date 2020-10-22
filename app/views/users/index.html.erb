@@ -1,27 +1,39 @@
 <h1 class="text-center text-white">Authors</h1>
+
 <%= paginate @users_list %>
+
 <div class="container mx-auto" style="width: 600px">
+
   <% @users_list.each do |user| %>
+
     <div class="row mt-4">
+
       <div class="col">
+
         <div class="card text-center">
+        
           <div class="card-header font-italic">
             <%= link_to "#{user.username}", user, class: "text-primary" %>
           </div>
+
           <div class="card-body">
-            <h5 class="card-title">
-              <%= show_user_picture_for(user, size: 180) %>
-            </h5>
+            <h5 class="card-title"> <%= show_user_picture_for(user, size: 180) %> </h5>
             <p class="card-text"><%= pluralize(user.articles.count, "article") %> </p>
             <%= link_to "View Profile", user, class: "btn btn-outline-secondary" %>
             <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-outline-info" %>
           </div>
+
           <div class="card-footer text-muted">
             <%= "Joined: #{time_ago_in_words(user.created_at)} ago"    %> 
           </div>
+
         </div>
+
       </div>
+
     </div>
+
   <% end %>
+
 </div>
 
