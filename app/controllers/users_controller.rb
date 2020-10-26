@@ -10,8 +10,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @articles = @user.articles.order(:created_at).reverse_order
-    @articles = @articles.page(params[:page]).per(3)
-  end
+
+    if(params.has_key?(:per_page))
+      @articles = @articles.page(params[:page]).per(params[:per_page])
+    else 
+      @articles = @articles.page(params[:page])
+    end
+  end 
 
   def create
     # create a new user with white listed params

@@ -10,8 +10,6 @@ class ArticlesController < ApplicationController
     else
       @articles = Article.order(:created_at).page(params[:page])
     end
-    
-    
   end
 
   def new
