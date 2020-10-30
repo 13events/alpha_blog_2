@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  include ApplicationHelper
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   # Shows the selected article
   def show; end
@@ -6,9 +7,9 @@ class ArticlesController < ApplicationController
   # display all articles
   def index
     if(params.has_key?(:per_page))
-      @articles = Article.order(:created_at).page(params[:page]).per(params[:per_page])
+      @articles = Article.order(:created_at).reverse_order.page(params[:page]).per(params[:per_page])
     else
-      @articles = Article.order(:created_at).page(params[:page])
+      @articles = Article.order(:created_at).reverse_order.page(params[:page])
     end
   end
 
@@ -22,7 +23,8 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     # hardcode a user to assign to the new article (REMOVE THIS LATER)
-    @article.user_id = User.first.id
+    byebug
+    @article.user_id = current_user.id
 
     # save article to db
     @article.save

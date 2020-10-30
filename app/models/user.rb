@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   #change email to lowecase before saving to DB
   before_save {self.email = email.downcase}
+  before_save {self.username = username.downcase}
 
   #flad model as having secure password
   has_secure_password

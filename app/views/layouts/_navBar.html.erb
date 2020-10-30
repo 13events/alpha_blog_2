@@ -4,7 +4,7 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav">
+			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
           <%= link_to(root_path, class: "nav-link h5 mt-2 text-light") do %>
             <%= "Home" %> <span class="sr-only">/span>
@@ -24,7 +24,16 @@
           <%= link_to(about_path, class: "nav-link h5 mt-2 text-light") do %>
             <%= "About" %>
           <% end %>
-				</li>
 			</ul>
-		</div>
+
+      <!-- Login/logout buttons depending on session parameters -->
+      <% if logged_in? %> 
+        <%= link_to 'Logout', logout_path, class: "btn btn-info text-white rounded shadow mr-2", method: :delete %>
+        <%= link_to current_user.username, user_path(current_user), class: "btn btn-secondary text-white rounded shadow mr-2" %>
+      <% else %>
+        <%= link_to 'Login', login_path, class: "btn btn-light rounded shadow mr-2" %>
+        <%=  link_to "Sign Up", signup_path, class: "btn btn-secondary shadow rounded text-white mr-2" %> 
+      <% end %>
+		
+    </div>
 	</nav>

@@ -11,16 +11,20 @@
     <p class="lead text-white">
       A world leader in capturing lifes important moments.
     <p>
-    <hr class="my-2 bg-white hr-small">
-    <p class="lead text-white">Login or Sign up to get started!</p>
+    <% if !logged_in? %>
+      <hr class="my-2 bg-white hr-small">
+      <p class="lead text-white">Login or Sign up to get started!</p>
+    <% end %>
     <!-- Content -->
 
-    <!-- Buttons -->
-    <button type="button" class="btn btn-light shadow  mr-2 rounded">
-      Login
-    </button>
-    <%=  link_to "Sign Up", signup_path, class: "btn btn-secondary shadow rounded text-white" %> 
-    <!-- Buttons -->
+    <!-- Show if user not logged in  -->
+    <% if !logged_in? %>
+      <!-- Login/Singup Buttons -->
+      <%= link_to 'Login', login_path, class: "btn btn-light mr-2 rounded shadow" %>
+      <%=  link_to "Sign Up", signup_path, class: "btn btn-secondary shadow rounded text-white" %> 
+      <!-- Login/Signup Buttons -->
+    <% end %>
+    
 
   </div>
   <!-- Jumbotron Welcome Block-->
