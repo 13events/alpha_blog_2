@@ -3,7 +3,9 @@
   <div class="container text-center mt-4">
     <div class="row">
       <div class="col mx-auto">
-        <%= link_to 'New Article', new_article_path, class: "btn-primary btn text-white" %>
+        <% if logged_in? %>
+          <%= link_to 'New Article', new_article_path, class: "btn-primary btn text-white" %>
+        <% end%>
       </div>
     </div>
   </div>

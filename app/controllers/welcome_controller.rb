@@ -1,7 +1,6 @@
 class WelcomeController < ApplicationController
   include ApplicationHelper
-  def home
-    redirect_to articles_path if logged_in?
+  def home 
     @articles = Article.last(5)
   end
 

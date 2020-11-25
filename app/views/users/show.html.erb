@@ -8,8 +8,10 @@
 </div>
 <div class="row mt-4">
   <div class="col text-white text-center">
+  <% if logged_in? && @user == current_user %>
     <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-info"%>
-    <h1 class="mt-4"> <%= "Your Articles" %></h1>
+  <% end %>
+    <h1 class="mt-4"> <%= "#{@user.username}'s Articles" %></h1>
   </div>
 </div>
 <%= render 'shared/pageFilter' %>

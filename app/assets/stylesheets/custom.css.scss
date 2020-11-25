@@ -58,3 +58,9 @@ html, body, .body-100 {
     background-color: black !important;
     border: solid 1px whitesmoke;
 }
+
+//Overide bootstrap dropddown highlight color
+.dropdown-menu > a:hover {
+    background-image: none;
+    background-color: teal;
+}

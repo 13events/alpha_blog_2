@@ -20,7 +20,9 @@
             <h5 class="card-title"> <%= show_user_picture_for(user, size: 180) %> </h5>
             <p class="card-text"><%= pluralize(user.articles.count, "article") %> </p>
             <%= link_to "View Profile", user, class: "btn btn-outline-secondary" %>
-            <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-outline-info" %>
+            <% if logged_in? && user == current_user%>
+              <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-outline-info" %>
+            <% end %>
           </div>
 
           <div class="card-footer text-muted">
