@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
+
   before_action :set_user, only: [:show, :edit, :update]
- 
+  before_action :require_user, only: [:edit, :update, :destroy]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   def signup
     @user = User.new
   end
@@ -36,7 +39,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    # return unless !logged_in? || @user != current_user
+
+    # flash[:alert] = 'You do not have authorization to perform that action.'
+    # redirect_to users_path
+  end
 
   def update
     if @user.update(user_params)
@@ -59,4 +67,13 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
+
+  def require_same_user
+    if current_user != @user
+      flash[:alert] = 'You can only edit or delete your own account.'
+      redirect_to @user
+    end
+  end
+
+
 end
