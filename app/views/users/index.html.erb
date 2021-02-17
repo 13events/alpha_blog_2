@@ -23,6 +23,10 @@
             <% if logged_in? && user == current_user%>
               <%= link_to "Edit Profile", edit_user_path(user), class: "btn btn-outline-info" %>
             <% end %>
+
+            <% if logged_in? && user_is_admin? %>
+              <%= link_to "Delete User", user_path(user), class: "btn btn-danger text-white", method: :delete, data: {confirm: "Are you sure you want to delete the user #{user.username}? This action cannot be undone."} %>
+            <% end %>
           </div>
 
           <div class="card-footer text-muted">

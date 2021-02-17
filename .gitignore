@@ -39,3 +39,9 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# ignore Rubymine .idea folder
+.idea
+
+#ignore VS Coder settings files
+.vscode
