@@ -11,7 +11,9 @@ class CategoriesController < ApplicationController
       render 'new'
     end
   end
-  def index; end
+  def index
+    @categories_list = Category.order(:name).page(params[:page]).per(5)
+  end
   def show
     @category = Category.find(params[:id])
   end
