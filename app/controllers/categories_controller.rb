@@ -1,4 +1,6 @@
+include ApplicationHelper
 class CategoriesController < ApplicationController
+  before_action :require_admin_user, except: [:show, :index]
   def new
     @category = Category.new
   end
@@ -21,5 +23,12 @@ class CategoriesController < ApplicationController
   private
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def require_admin_user
+    if !(logged_in? && user_is_admin?)
+      flash[:alert] = "You must be an admin to perform that action!"
+      redirect_to categories_path
+    end
   end
 end
