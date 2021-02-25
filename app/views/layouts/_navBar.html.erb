@@ -7,13 +7,19 @@
 			<ul class="navbar-nav mr-auto">
 				<li class="nav-item">
           <%= link_to(root_path, class: "nav-link h5 mt-2 text-light") do %>
-            <%= "Home" %> <span class="sr-only">/span>
+            <%= "Home" %> <span class="sr-only"></span>
           <% end %>
 				</li>
 				<li class="nav-item">
           <%= link_to(articles_path, class: "nav-link h5 mt-2 text-light") do %>
             <%= "Articles" %>
           <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to(categories_path, class: "nav-link h5 mt-2 text-light") do %>
+            <%= "Categories" %>
+          <% end %>
+        </li>
         <li class="nav-item">
           <%= link_to(users_path, class: "nav-link h5 mt-2 text-light") do %>
             <%= "Authors" %>
@@ -37,9 +43,12 @@
               <%= current_user.username%>
             <% end %>
             </a>
-            <div class="dropdown-menu bg-dark shadow-lg" aria-labelledby="navbarDropdown">
-              <%= link_to 'My Profile', user_path(current_user), class: "dropdown-item text-light" %>
-              <%= link_to 'New Article', new_article_path, class: "dropdown-item text-light" %>
+            <div class="dropdown-menu bg-dark shadow-lg " aria-labelledby="navbarDropdown">
+              <%= link_to 'My Profile', user_path(current_user), class: "dropdown-item text-light " %>
+              <%= link_to 'New Article', new_article_path, class: "dropdown-item text-light " %>
+              <% if user_is_admin? %>
+                <%= link_to 'Create new category', new_category_path, class: 'dropdown-item text-light ' %>
+              <% end %>
               <div class="dropdown-divider"></div>
               <%= link_to 'Logout', logout_path, class: "dropdown-item text-light", method: :delete %>
               <%= link_to 'Delete Account', user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: {confirm: "Are you sure?"} %>
