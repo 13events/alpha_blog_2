@@ -19,6 +19,10 @@
                   <div class="col">
                     <div class="card-subtitle">Date: <%= @article.created_at.to_time %></div>
                     <div class="card-subtitle">Author: <%= link_to @article.user.username,  user_path(@article.user), class: "text-primary" %></div>
+                    <% @article.categories.each do |category| %>
+                      <span class="badge bg-primary text-light"><%= category.name %></span>
+                    <% end  %>
+                    <br>
                     <%= link_to show_user_picture_for(@article.user), user_path(@article.user) %>
                   </div>
                 </div>

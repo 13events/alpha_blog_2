@@ -27,6 +27,9 @@
             <h4 class="card-title"><%= article.title %></h4>
             <div class="card-subtitle">Date: <%= article.created_at.to_time %></div>
             <div class="card-subtitle">Author: <%= article.user.username %></div>
+            <% article.categories.each do |category| %>
+              <span class="badge bg-primary text-light"><%= category.name %></span>
+            <% end  %>
             <hr class="bg-dark">
             <p class="card-text"><%= truncate(article.description, length: 500) %></p>
             <%= link_to 'Read More', article_path(article), class: "btn btn-sm btn-outline-secondary shadow"%>
@@ -42,5 +45,3 @@
 
   <% end %>
 </div>
-
-
