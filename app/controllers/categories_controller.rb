@@ -1,9 +1,11 @@
 include ApplicationHelper
 class CategoriesController < ApplicationController
   before_action :require_admin_user, except: [:show, :index]
+
   def new
     @category = Category.new
   end
+
   def create
     @category = Category.new(category_params)
     if @category.save
@@ -13,14 +15,32 @@ class CategoriesController < ApplicationController
       render 'new'
     end
   end
+
   def index
     @categories_list = Category.order(:name).page(params[:page]).per(5)
   end
+
   def show
+    @category = Category.find(params[:id])
+    @articles = @category.article
+  end
+  def edit
     @category = Category.find(params[:id])
   end
 
+  def update
+    @category = Category.find(params[:id])
+
+    if @category.update(category_params)
+      flash[:notice] = 'Category updated successfully!'
+      redirect_to @category
+    else
+      render 'edit'
+    end
+  end
+
   private
+
   def category_params
     params.require(:category).permit(:name)
   end
@@ -31,4 +51,5 @@ class CategoriesController < ApplicationController
       redirect_to categories_path
     end
   end
+
 end

@@ -20,7 +20,7 @@
               <p class="card-subtitle mb-2 ">Date: <%= article.created_at.to_time %> </p>
               <p class="card-subtitle mb-2 ">Author: <%= link_to "#{article.user.username}", user_path(article.user.id), class: "text-primary" %> </p>
               <% article.categories.each do |category| %>
-                <span class="badge bg-primary text-light"><%= category.name %></span>
+                <%= link_to "#{category.name}", category_path(category.id), class:  "badge bg-primary text-light" %>
               <% end %>
               <hr class="bg-dark">
               <p class="card-text"> <%= truncate(article.description, length: 500) %> </p>

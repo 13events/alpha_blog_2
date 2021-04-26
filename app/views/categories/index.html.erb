@@ -2,7 +2,10 @@
 
 
 
-<div class="container mt-4">
+<div class="container mt-4 mx-auto text-center">
+  <% if logged_in? && user_is_admin? %>
+    <%= link_to 'New Category', new_category_path, class: 'btn btn-primary text-white' %>
+  <% end %>
   <%= paginate @categories_list %>
   <div class="d-flex flex-column">
     <% @categories_list.each do |category| %>
@@ -14,11 +17,12 @@
         <div class="col-3 d-flex flex-column mx-auto">
 
           <!-- Card -->
-          <div class="card">
+          <div class="card text-center">
 
             <!-- Card Body -->
             <div class="card-body">
-              <h4 class="card-title text-center"><%= link_to category.name, category_path(category) %> </h4>
+              <h4 class="card-title"><%= link_to category.name, category_path(category) %> </h4>
+              <p class="card-text"><%= pluralize(category.article.count, "article") %> </p>
             </div>
             <!-- Card Body -->
 

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="container justify-content-start mt-3">
+
+    <!-- Display errors, if any -->
+    <%= render 'shared/errorMessages', object: @category %>
+
+    <!-- Display article submission form -->
+    <%= form_with(model: @category, class: "card p-3 bg-dark shadow text-light") do |f| %>
+      <div class="form-group card-body">
+        <%= f.label :name, "Category Name", class: "card-title form-label h4" %>
+        <%= f.text_field :name, class: "form-control col-10 shadow-lg", placeholder: "Enter category name" %>
+      </div>
+
+      <div class="form-group card-body">
+        <div class="row">
+          <div class="col">
+            <%= f.submit class: "btn btn-outline-light"%>
+            <%= link_to 'Cancel', articles_path, class: "ml-3 btn btn-outline-info text-info" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>

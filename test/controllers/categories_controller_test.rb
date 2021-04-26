@@ -40,11 +40,18 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test "should get edit" do
-  #   get edit_category_url(@category)
-  #   assert_response :success
-  # end
-  #
+  test "should get edit if admin" do
+    sign_in_as @admin_user
+    get edit_category_url(@category)
+    assert_response :success
+  end
+
+  test "should NOT get edit if NOT admin" do
+    get edit_category_url(@category)
+    assert_redirected_to categories_url
+  end
+
+
   # test "should update category" do
   #   patch category_url(@category), params: { category: {  } }
   #   assert_redirected_to category_url(@category)
